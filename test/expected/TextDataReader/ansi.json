@@ -1,0 +1,520 @@
+[
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "AIANNHCE",
+    "American Indian Area code",
+    "4345"
+  ],
+  [
+    "AIANNHNS",
+    "American Indian Area NS code",
+    "01934334"
+  ],
+  [
+    "AIANNHNAME",
+    "American Indian Area name and legal/statistical area description",
+    "Turtle Mountain Reservation"
+  ],
+  [
+    "STATES",
+    "State(s) postal abbreviation where this American Indian Area is located",
+    "MT~ND~SD"
+  ],
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "CA"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "06"
+  ],
+  [
+    "AIANNHCE",
+    "American Indian Area code",
+    "1235"
+  ],
+  [
+    "AIANNHNS",
+    "American Indian Area NS code",
+    "00024003"
+  ],
+  [
+    "AIANNHNAME",
+    "American Indian Area name and legal/statistical area description",
+    "Fort Mojave Reservation"
+  ],
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "TX"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "48"
+  ],
+  [
+    "CDFP",
+    "116th Congressional District FIPS code",
+    "06"
+  ],
+  [
+    "CDNAME",
+    "Congressional District name and legal/statistical area description",
+    "Congressional District 6"
+  ],
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "TX"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "48"
+  ],
+  [
+    "COUNTYFP",
+    "County FIPS code",
+    "041"
+  ],
+  [
+    "COUNTYNS",
+    "County NS code",
+    "01383806"
+  ],
+  [
+    "COUNTYNAME",
+    "County name and legal/statistical area description",
+    "Brazos County"
+  ],
+  [
+    "CLASSFP",
+    "FIPS class code",
+    "H1"
+  ],
+  [
+    "FUNCSTAT",
+    "Functional status",
+    "A"
+  ],
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "AR"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "05"
+  ],
+  [
+    "COUNTYFP",
+    "County FIPS code",
+    "131"
+  ],
+  [
+    "COUNTYNAME",
+    "County name and legal/statistical area description",
+    "Sebastian County"
+  ],
+  [
+    "COUSUBFP",
+    "County subdivision FIPS code",
+    "91105"
+  ],
+  [
+    "COUSUBNS",
+    "County subdivision NS code",
+    "02805599"
+  ],
+  [
+    "COUSUBNAME",
+    "County subdivision name and legal/statistical area description",
+    "Township 1"
+  ],
+  [
+    "CLASSFP",
+    "FIPS class code",
+    "Z1"
+  ],
+  [
+    "FUNCSTAT",
+    "Functional Status",
+    "N"
+  ],
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "FL"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "12"
+  ],
+  [
+    "PLACEFP",
+    "Place FIPS code",
+    "21850"
+  ],
+  [
+    "PLACENS",
+    "Place NS code",
+    "02403596"
+  ],
+  [
+    "PLACENAME",
+    "Place name and legal/statistical area description",
+    "Fanning Springs city"
+  ],
+  [
+    "TYPE",
+    "Place type",
+    "Incorporated Place"
+  ],
+  [
+    "CLASSFP",
+    "FIPS class code",
+    "C1"
+  ],
+  [
+    "FUNCSTAT",
+    "Legal functional status",
+    "A"
+  ],
+  [
+    "COUNTIES",
+    "Name of county or counties in which this place is located",
+    "Gilchrist County~~~ Levy County"
+  ],
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "MD"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "24"
+  ],
+  [
+    "COUNTYFP",
+    "County FIPS code",
+    "029"
+  ],
+  [
+    "COUNTYNAME",
+    "County name and legal/statistical area description",
+    "Kent County"
+  ],
+  [
+    "PLACEFP",
+    "Place FIPS code",
+    "52825"
+  ],
+  [
+    "PLACENS",
+    "Place NS code",
+    "02391303"
+  ],
+  [
+    "PLACENAME",
+    "Place name and legal/statistical area description",
+    "Millington town"
+  ],
+  [
+    "TYPE",
+    "Place type",
+    "Incorporated Place"
+  ],
+  [
+    "CLASSFP",
+    "FIPS class code",
+    "C1"
+  ],
+  [
+    "FUNCSTAT",
+    "Legal functional status",
+    "A"
+  ],
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "PA"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "42"
+  ],
+  [
+    "LEA",
+    "School district local education agency code",
+    "02190"
+  ],
+  [
+    "SDNAME",
+    "School district name",
+    "Allegheny Valley School District"
+  ],
+  [
+    "SDTYPE",
+    "School district type",
+    "Unified"
+  ],
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "MN"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "27"
+  ],
+  [
+    "SLDLST",
+    "State Legislative district Lower Chamber code",
+    "11B"
+  ],
+  [
+    "SLDLNAME",
+    "State Legislative district Lower Chamber name",
+    "State House District 11B"
+  ],
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "HI"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "15"
+  ],
+  [
+    "SLDUST",
+    "State Legislative district Upper Chamber code",
+    "007"
+  ],
+  [
+    "SLDUNAME",
+    "State Legislative district Upper Chamber name",
+    "State Senate District 7"
+  ],
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "VA"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "51"
+  ],
+  [
+    "STATENS",
+    "State NS code",
+    "01779803"
+  ],
+  [
+    "STATE_NAME",
+    "State name",
+    "Virginia"
+  ],
+  [
+    "Area Name",
+    "State FIPS Code",
+    "State Postal Abbreviation",
+    "Status"
+  ],
+  [
+    "American Samoa",
+    "60",
+    "AS",
+    "1"
+  ],
+  [
+    "Federated States of Micronesia",
+    "64",
+    "FM",
+    "3"
+  ],
+  [
+    "Guam",
+    "66",
+    "GU",
+    "1"
+  ],
+  [
+    "Marshall Islands",
+    "68",
+    "MH",
+    "3"
+  ],
+  [
+    "Commonwealth of the Northern Mariana Islands",
+    "69",
+    "MP",
+    "1"
+  ],
+  [
+    "Palau",
+    "70",
+    "PW",
+    "3"
+  ],
+  [
+    "Puerto Rico",
+    "72",
+    "PR",
+    "1"
+  ],
+  [
+    "U.S. Minor Outlying Islands",
+    "74",
+    "UM",
+    "2"
+  ],
+  [
+    "U.S. Virgin Islands",
+    "78",
+    "VI",
+    "1"
+  ],
+  [
+    "Status: Under U.S sovereignty An aggregation of nine U.S. territories: Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Islands, Navassa Island, Palmyra Atoll, and Wake Island. Each territory is assigned an ANSI County Code in INCITS 31:2009, and may be individually identified through a combination of the ANSI State Code (74 or UM) and the appropriate ANSI County Code. Independent nation that operates under a Compact of Free Association with the United States of America."
+  ],
+  [
+    "Area Name",
+    "State FIPS Code"
+  ],
+  [
+    "Baker Island",
+    "81"
+  ],
+  [
+    "Howland Island",
+    "84"
+  ],
+  [
+    "Jarvis Island",
+    "86"
+  ],
+  [
+    "Johnston Atoll",
+    "67"
+  ],
+  [
+    "Kingman Reef",
+    "89"
+  ],
+  [
+    "Midway Islands",
+    "71"
+  ],
+  [
+    "Navassa Island",
+    "76"
+  ],
+  [
+    "Palmyra Atoll",
+    "95"
+  ],
+  [
+    "Wake Island",
+    "79"
+  ],
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "MD"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "24"
+  ],
+  [
+    "COUNTYFP",
+    "County FIPS code",
+    "009"
+  ],
+  [
+    "COUNTYNAME",
+    "County name and legal/statistical area description",
+    "Calvert County"
+  ],
+  [
+    "VTDST",
+    "State assigned voting district code",
+    "01-001"
+  ],
+  [
+    "VTDNAME",
+    "Voting district name and legal/statistical area description",
+    "Calvert Precinct 01-001"
+  ]
+]

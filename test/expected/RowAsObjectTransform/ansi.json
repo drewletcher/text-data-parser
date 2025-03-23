@@ -1,0 +1,6 @@
+[
+  {"Field Name":"STATE","Field Description":"State postal abbreviation","Example":"TX"},
+  {"Field Name":"STATEFP","Field Description":"State FIPS code","Example":"48"},
+  {"Field Name":"CDFP","Field Description":"116th Congressional District FIPS code","Example":"06"},
+  {"Field Name":"CDNAME","Field Description":"Congressional District name and legal/statistical area description","Example":"Congressional District 6"}
+  ]

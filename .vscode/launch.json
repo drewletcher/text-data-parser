@@ -1,0 +1,167 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "saxParser",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/test/saxParser.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "saxStream",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/test/saxStream.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "getCells",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/test/getCells.js"
+    },
+    {
+      "type": "node-terminal",
+      "name": "---",
+      "request": "launch"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "TextDataParser",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/test/testDataParser.js"
+    },
+    {
+      "type": "node",
+      "name": "TextDataReader",
+      "program": "${workspaceFolder}/test/testDataReader.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "name": "RowAsObjectTransform",
+      "program": "${workspaceFolder}/test/testRowAsObject.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "name": "RepeatCellTransform",
+      "program": "${workspaceFolder}/test/testRepeatCell.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "name": "RepeatHeadingTransform",
+      "program": "${workspaceFolder}/test/testRepeatHeading.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node-terminal",
+      "name": "---",
+      "request": "launch"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "tdp helloworld json",
+      "program": "text-data-parser.js",
+      "args": [ ".\\test\\data\\text\\helloworld.text", "--id=global", "--headers=Greating" ],
+      "outputCapture": "std",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "tdp helloworld csv",
+      "program": "text-data-parser.js",
+      "args": [ ".\\test\\data\\text\\helloworld.text", "--id=cosmic", "--headers=Greating", "--format=csv" ],
+      "outputCapture": "std",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "tdp helloworld rows",
+      "program": "text-data-parser.js",
+      "args": [ ".\\test\\data\\text\\helloworld.text", "--format=rows" ],
+      "outputCapture": "std",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "tdp ANSI csv",
+      "program": "text-data-parser.js",
+      "args": [ ".\\test\\data\\text\\ansi.text", ".\\test\\output\\tdp\\ansi.csv", "--format=csv" ],
+      "outputCapture": "std",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "tdp ANSI json",
+      "program": "text-data-parser.js",
+      "args": [ ".\\test\\data\\text\\ansi.text", ".\\test\\output\\tdp\\ansi.json", "--heading=Congressional Districts", "--format=json" ],
+      "outputCapture": "std",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "tdp RepeatCell",
+      "program": "text-data-parser.js",
+      "args": [ "--options=.\\test\\optionsRepeatCell.json" ],
+      "outputCapture": "std",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "tdp RepeatHeading",
+      "program": "text-data-parser.js",
+      "args": [ "--options=.\\test\\optionsRepeatHeading.json" ],
+      "outputCapture": "std",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    }
+  ]
+}

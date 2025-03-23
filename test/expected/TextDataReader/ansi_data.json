@@ -1,0 +1,27 @@
+[
+  [
+    "Field Name",
+    "Field Description",
+    "Example"
+  ],
+  [
+    "STATE",
+    "State postal abbreviation",
+    "TX"
+  ],
+  [
+    "STATEFP",
+    "State FIPS code",
+    "48"
+  ],
+  [
+    "CDFP",
+    "116th Congressional District FIPS code",
+    "06"
+  ],
+  [
+    "CDNAME",
+    "Congressional District name and legal/statistical area description",
+    "Congressional District 6"
+  ]
+]

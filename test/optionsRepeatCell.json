@@ -1,0 +1,7 @@
+{
+  "url": "./test/data/text/az_jan2024.htm",
+  "heading": "Counties - Active",
+  "cells": 9,
+  "RepeatCell.column": 0,
+  "output": "./test/output/tdp/repeat_cell.json"
+}
