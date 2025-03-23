@@ -1,0 +1,43 @@
+{
+  "name": "text-data-parser",
+  "version": "1.0.1",
+  "description": "Parse, search and stream tabular data from text files using Node.js.",
+  "author": "Drew O. Letcher",
+  "license": "MIT",
+  "keywords": [
+    "text",
+    "txt",
+    "table",
+    "tabular data",
+    "parser"
+  ],
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "main": "lib/index.js",
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "test": "testrunner.bat"
+  },
+  "bin": {
+    "tdp": "text-data-parser.js",
+    "textdataparser": "text-data-parser.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/drewletcher/text-data-parser.git"
+  },
+  "homepage": "https://gitlab.com/drewletcher/text-data-parser#readme",
+  "bugs": {
+    "url": "https://gitlab.com/drewletcher/text-data-parser/issues"
+  },
+  "devDependencies": {
+    "eslint": "^9.8.0"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "jsonc-parser": "^3.3.1",
+    "sax": "github:isaacs/sax-js#semver:1.4"
+  }
+}
