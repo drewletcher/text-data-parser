@@ -1,5 +1,5 @@
 /**
- * test/testParser.js
+ * test/testDataParser.js
  */
 
 const TextDataParser = require("../lib/TextDataParser");
@@ -36,12 +36,22 @@ async function test(options) {
 }
 
 (async () => {
-  if (await test({ url: "./test/data/text/helloworld.text", id: "global"})) return 1;
-  if (await test({ url: "https://www.census.gov/library/reference/code-lists/ansi.text" })) return 1;
-  if (await test({ url: "https://www.sos.state.tx.us/elections/historical/jan2024.shtml" })) return 1;
+  if (await test({
+    url: "./test/data/text/helloworld.txt"
+  })) return 1;
 
-  if (await test({ data: "./test/data/text/helloworld.text", id: "cosmic" })) return 1;
-  if (await test({ data: "./test/data/text/ansi.text", heading: /Congress.* Districts/ })) return 1;
-  if (await test({ data: "./test/data/text/texas_jan2024.shtml" })) return 1;
+  if (await test({
+    url: "./test/data/text/foo_data.txt",
+    separator: "\t"
+  })) return 1;
+
+  if (await test({
+    url: "http://dev.oby4.org/data/test/data/input/foo_cars.csv"
+  })) return 1;
+
+  // load file as options.data
+  if (await test({
+    data: "./test/data/text/helloworld.txt"
+  })) return 1;
 
 })();

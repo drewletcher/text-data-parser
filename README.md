@@ -1,12 +1,8 @@
 # text-data-parser 1.0.x
 
-!!! UNDER DEVELOPMENT NOT READY FOR PRIME TIME !!!
-
-Parse and stream tabular data from Text documents using Node.js and [isaacs/sax-js](https://github.com/isaacs/sax-js).
+Parse and stream data from Text documents using Node.js.
 
 This readme explains how to use text-data-parser in your code or as a stand-alone program.
-
-> Only supports Text documents containing TABLE elements. Does not support parsing grid or other table like elements.
 
 Related projects: [text-data-parser](https://gitlab.com/drewletcher/text-data-parser#readme), [pdf-data-parser](https://gitlab.com/drewletcher/pdf-data-parser#readme), [xlsx-data-parser](https://gitlab.com/drewletcher/xlsx-data-parser#readme)
 
@@ -31,19 +27,16 @@ npm install text-data-parser
 Parse tabular data from a Text document.
 
 ```bash
-tdp [--options=filename.json] [--heading=title] [--id=name] [--cells=#] [--headers=name1,name2,...] [--format=json|csv|rows] <filename|URL> [<output-file>]
+tdp [--options=filename.json] [--headers=name1,name2,...] [--format=json|csv|rows] <filename|URL> [<output-file>]
 
   `filename|URL` - path name or URL of Text file to process, required.
   `output-file`  - local path name for output of parsed data, default stdout.
   `--options`    - JSON or JSONC file containing JSON object with tdp options, optional.
-  `--heading`    - text of heading to find in document that precedes desired data table, default none.
-  `--id`         - TABLE element id attribute to find in document.
-  `--cells`      - number of cells in a data row, minimum or "min-max", default = "1-256".
   `--headers`    - comma separated list of column names for data, default none the first table row contains names.
   `--format`     - output data format JSON, CSV or rows (JSON arrays), default JSON.
 ```
 
-Note: If the `tdp` command conflicts with another program on your system use `hdpdataparser` instead.
+Note: If the `tdp` command conflicts with another program on your system use `tdpdataparser` instead.
 
 ### Options File
 
@@ -59,14 +52,6 @@ The options file supports options for all text-data-parser modules. Parser will 
   "output": "",
   // format - output data format CSV, JSON or rows, default JSON, rows is JSON array of arrays (rows).
   "format": "json",
-  // heading - text of heading to find in document that precedes desired data table, default none.
-  "heading": null,
-  // id - TABLE element id attribute to find in document.
-  "id": "",
-  // cells - number of cells for a data row, minimum or "min-max", default = "1-256".
-  "cells": "1-256",
-  // newlines - preserve new lines in cell data, default: false.
-  "newlines": false,
   // trim whitespace from output values, default: true.
   "trim": true,
 
@@ -76,18 +61,6 @@ The options file supports options for all text-data-parser modules. Parser will 
   "RowAsObject.hasHeader": true
   // headers - comma separated list of column names for data, default none. When not defined the first table row encountered will be treated as column names.
   "RowAsObject.headers": []
-
-  /* RepeatCellTransform options */
-
-  // column - column index of cell to repeat, default 0.
-  "RepeatCell.column": 0
-
-  /* RepeatHeadingTransform options */
-
-  // hasHeaders - data has a header row, if true and headers set then headers overrides header row.
-  "RepeatHeading.hasHeader": true
-  // header - column name for the repeating heading field. Can optionally contain suffix :m:n with index for inserting into header and data rows.
-  "RepeatHeading.header": "subheading:0:0"
 
   /* HTTP options */
   // see HTTP Options below
@@ -104,28 +77,15 @@ tdp ./test/data/text/helloworld.text --headers="Greeting" --format=csv
 ```
 
 ```bash
-tdp ./test/data/text/helloworld.text --id="cosmic" --headers="BigBang"
+tdp ./test/data/text/helloworld.text --headers="BigBang"
 ```
 
 ```bash
-tdp ./test/data/text/ansi.text  --heading="Congressional Districts"
+tdp ./test/data/text/foo_data.txt  --separator="\t"
 ```
 
 ```bash
 tdp https://www.sos.state.tx.us/elections/historical/jan2024.shtml ./test/output/tdp/tx_voter_reg.json
-```
-
-```bash
-tdp --options="./test/optionsRepeatCell.json"
-
-optionsRepeatCell.json:
-{
-  "url": "./test/data/text/texas_jan2024.shtml",
-  "output": "./test/output/tdp/repeat_cell.json",
-  "format": "json",
-  "cells": 7,
-  "RepeatCell.column": 0
-}
 ```
 
 ## Developer Guide
@@ -134,9 +94,7 @@ optionsRepeatCell.json:
 
 ### TextDataParser
 
-TextDataParser given a Text document will output an array of arrays (rows). Additionally, use the streaming classes TextDataReader and RowAsObjectTransform transform to convert the arrays to Javascript objects.  With default settings TextDataParser will output rows in __all__ TABLE found in the document. Using [TextDataParser Options](#text-data-parser-options) `heading` or `id` the parser can filter content to retrieve the desired data TABLE in the document.
-
-TextDataParser only works on a certain subset of Text documents specifically those that contain some TABLE elements and NOT other table like grid elements. The parser uses [isaacs/sax-js](https://github.com/isaacs/sax-js) library to transform Text table elements into rows of cells.
+TextDataParser given a Text document will output an array of arrays (rows). Additionally, use the streaming classes TextDataReader and RowAsObjectTransform transform to convert the arrays to Javascript objects.  With default settings TextDataParser will parse .csv files. Using [TextDataParser Options]
 
 Rows and Cells terminology is used instead of Rows and Columns because the content in a Text document flows rather than strict rows/columns of database query results. Some rows may have more cells than other rows. For example a heading or description paragraph will be a row (array) with one cell (string).  See [Notes](#notes) below.
 
@@ -163,13 +121,9 @@ TextDataParser constructor takes an options object with the following fields. On
 
 Common Options:
 
-`{String|RegExp} heading` - Heading, H1-H6 element, in the document after which the parser will look for a TABLE; optional, default: none. The parser does a string comparison or regexp match looking for first occurrence of `heading` value in a heading element. If neither `heading` or `id` are specified then data output contains all rows from all tables found in the document.
+`{String} separator` - .
 
-`{String|RegExp} id` - TABLE element id attribute in the document to parse for tabular data; optional, default: none. The parser does a string comparison of the `id` value in TABLE elements ID attribute. If neither `heading` or `id` are specified then data output contains all rows from all tables found in the document.
-
-`{Number} cells` - Minimum number of cells in tabular data; optional, default: 1. The parser will NOT output rows with less than `cells` number of cells.
-
-`{Boolean} newlines` - Preserve new lines in cell data; optional, default: false. When false newlines will be replaced by spaces. Preserving newlines characters will keep the formatting of multiline text such as descriptions. Though, newlines are problematic for cells containing multi-word identifiers and keywords that might be wrapped in the cell text.
+`{String} quote` - .
 
 `{Boolean} trim` - trim whitespace from output values, default: true.
 
@@ -240,93 +194,9 @@ RowAsObjectTransform constructor takes an options object with the following fiel
 
 If a row is encountered with more cells than in the headers array then extra cell property names will be the ordinal position. For example if the data contains five cells, but only three headers where specified.  Specifying `options = { headers: [ 'name', 'type', 'info' ] }` then the Javascript objects in the stream will contain `{ "name": "value1", "type": "value2", "info": "value3", "4": "value4", "5": "value5" }`.
 
-### RepeatCellTransform
-
-The RepeatCellTransform will normalize data the was probably generated by a report writer. The specified cell will be repeated in following rows that contain one less cell. In the following example "Dewitt" will be repeated in rows 2 and 3.
-
-**Text Document**
-
-```
-County   Precincts  Date/Period   Total
-Dewitt          44  JUL 2023     52,297
-                44  OCT 2023     52,017
-                44  JAN 2024     51,712
-```
-
-**Output**
-
-```
-[ "County", "Precincts", "Date/Period", "Total" ]
-[ "Dewitt", "44", "JUL 2023", "52,297" ]
-[ "Dewitt", "44", "OCT 2023", "52,017" ]
-[ "Dewitt", "44", "JAN 2024", "51,712" ]
-```
-
-### Example Usage
-
-```javascript
-const { TextDataReader, RepeatCellTransform } = require("text-data-parser");
-const { pipeline } = require('node:stream/promises');
-
-let reader = new TextDataReader(options);
-let transform1 = new RepeatCellTransform({ column: 0 });
-let writable = <some writable that can handle Object Mode data>
-
-await pipeline(reader, transform1, writable);
-```
-
-### RepeatCellTransform Options
-
-RepeatCellTransform constructor takes an options object with the following fields.
-
-`{Number} column` - column index of cell to repeat, default 0.
-
-### RepeatHeadingTransform
-
-The RepeatHeadingTransform will normalize data the was probably generated by a report writer. Subheadings are rows containing a single cell interspersed in data rows. The header name is inserted in to the header row. The subheading value will be repeated in rows that follow until another subheading is encountered. In the following example `options = {header: "County:1:0"}`.
-
-**Text Document**
-
-```
-District  Precincts    Total
-
-Congressional District 5
-Maricopa        120  403,741
-Pinal            30  102,512
-Total:          150  506,253
-```
-
-**Output**
-
-```
-[ "District", "County", "Precincts", "Total" ]
-[ "Congressional District 5", "Maricopa", "120", "403,741" ]
-[ "Congressional District 5", "Pinal", "30", "102,512" ]
-[ "Congressional District 5", "Total:", "150", "506,253" ]
-```
-
-```javascript
-const { TextDataReader, RepeatHeadingTransform } = require("text-data-parser");
-const { pipeline } = require('node:stream/promises');
-
-let reader = new TextDataReader(options);
-let transform1 = new RepeatHeadingTransform({header: "County:1:0"});
-let writable = <some writable that can handle Object Mode data>
-
-await pipeline(reader, transform1, writable);
-```
-
-### RepeatHeadingTransform Options
-
-RepeatHeadingTransform constructor takes an options object with the following fields.
-
-`{String} header` - column name for the repeating heading field. Can optionally contain an index of where to insert the header in the header row. Default "heading:0".
-
-`{Boolean} hasHeaders` - data has a header row, if true and headers options is set then provided headers override header row. Default is true.
-
 ### FormatCSV and FormatJSON
 
-The `hdpdataparser` CLI program uses the FormatCSV and FormatJSON transforms to covert Javascript Objects into strings that can be saved to a file.
+The `tdpdataparser` CLI program uses the FormatCSV and FormatJSON transforms to covert Javascript Objects into strings that can be saved to a file.
 
 ```javascript
 const { TextDataReader, RowAsObjectTransform, FormatCSV } = require("text-data-parser");
@@ -375,6 +245,4 @@ Output as JSON objects:
 
 ---
 
-* Only supports Text files containing TABLE elements. Does not support other table like grid elements.
-* Does not support identification of titles, headings, column headers, etc. by using style information for a cell.
-* Vertical spanning cells are parsed with first row where the cell is encountered. Subsequent rows will not contain the cell and have one less cell. Currently, vertical spanning cells must be at the end of the row otherwise the ordinal position of cells in the following rows will be incorrect, i.e. missing values are not supported.
+* Options separator and quote default to ',' and '"' for parsing .csv files.

@@ -1,5 +1,5 @@
 /**
- * test/testObjectTransform.js
+ * test/testRowAsObject.js
  */
 
 const { TextDataReader, RowAsObjectTransform } = require("../lib");
@@ -36,9 +36,24 @@ async function test(options) {
 }
 
 (async () => {
-  if (await test({ url: "./test/data/text/helloworld.text", id: "global", headers: [ "Greeting" ] })) return 1;
-  if (await test({ data: "./test/data/text/helloworld.text", id: "cosmic", headers: [ "BigBang" ] })) return 1;
-  if (await test({ url: "./test/data/text/ansi.text", heading: "Congressional Districts" })) return 1;
-  if (await test({ url: "./test/data/text/texas_jan2024.shtml" })) return 1;
+  if (await test({
+    url: "./test/data/text/helloworld.txt",
+    headers: [ "Greeting" ]
+  })) return 1;
+
+  if (await test({
+    url: "./test/data/text/foo_data.txt",
+    separator: "\t"
+  })) return 1;
+
+  if (await test({
+    url: "http://dev.oby4.org/data/test/data/input/foo_cars.csv"
+  })) return 1;
+
+  // load file as options.data
+  if (await test({
+    data: "./test/data/text/helloworld.txt",
+    headers: [ "Greeting" ]
+  })) return 1;
 
 })();

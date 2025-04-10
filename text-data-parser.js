@@ -6,8 +6,6 @@
 "use strict";
 
 const TextDataReader = require("./lib/TextDataReader.js");
-const RepeatCellTransform = require("./lib/RepeatCellTransform.js");
-const RepeatHeadingTransform = require("./lib/RepeatHeadingTransform.js");
 const RowAsObjectTransform = require("./lib/RowAsObjectTransform.js");
 const FormatCSV = require("./lib/FormatCSV.js");
 const FormatJSON = require("./lib/FormatJSON.js");
@@ -26,14 +24,13 @@ var options = {
   url: "",
   format: "json",
   output: "",
-  cells: "1-256",
   trim: true
 }
 
 /**
  * parseArgs
  *   only filename is required
- *   example ["node.exe", "text-data-parser.js", <filename.text|URL>, <output> "--cells=3", "--heading=title", "--repeating" "--headers=c1,c2,.." "--format=json|csv|rows" ]
+ *   example ["node.exe", "text-data-parser.js", <filename.text|URL>, <output> "--headers=c1,c2,.." "--format=json|csv|rows" ]
  */
 async function parseArgs() {
 
@@ -60,12 +57,6 @@ async function parseArgs() {
         };
         Object.assign(options, parse(optionsfile, perrors, poptions));
       }
-      else if (nv[ 0 ] === "--cells")
-        options.cells = parseInt(nv[ 1 ]);
-      else if (nv[ 0 ] === "--heading")
-        options.heading = nv[ 1 ];
-      else if (nv[ 0 ] === "--id")
-        options.id = nv[ 1 ];
       else if (nv[ 0 ].includes("--headers"))
         options.headers = nv[ 1 ].split(",");
       else if (nv[ 0 ] === "--format")
@@ -95,14 +86,11 @@ async function parseArgs() {
     console.log("");
     console.log("Parse tabular data from a Text file.");
     console.log("");
-    console.log("tdp [--options=filename.json] <filename.text|URL> [<output>] [--heading=title] [--id=name] [--cells=#] [--headers=name1,name2,...] [--format=json|csv|rows]");
+    console.log("tdp [--options=filename.json] <filename.text|URL> [<output>] [--headers=name1,name2,...] [--format=json|csv|rows]");
     console.log("");
     console.log("  --options    - JSON or JSONC file containing tdp options, optional.");
     console.log("  filename|URL - path name or URL of Text file to process, required.");
     console.log("  output       - local path name for output of parsed data, default stdout.");
-    console.log("  --heading    - text of heading to find in document that precedes desired data table, default none.");
-    console.log("  --id         - TABLE element id attribute to find in document.");
-    console.log("  --cells      - minimum number of cells for a data row, default = 1.");
     console.log("  --headers    - comma separated list of column names for data, default none first table row contains names.");
     console.log("  --format     - output data format JSON, CSV or rows (JSON arrays), default JSON.");
     console.log("");
@@ -114,16 +102,6 @@ async function parseArgs() {
 
     let reader = new TextDataReader(options);
     pipes.push(reader);
-
-    if (Object.hasOwn( options,  "RepeatCell.column") || Object.hasOwn( options, "column")) {
-      let transform = new RepeatCellTransform(options);
-      pipes.push(transform);
-    }
-
-    if (Object.hasOwn( options, "RepeatHeading.header") || Object.hasOwn( options, "header")) {
-      let transform = new RepeatHeadingTransform(options);
-      pipes.push(transform);
-    }
 
     if (options?.format.toLowerCase() !== "rows") {
       let transform = new RowAsObjectTransform(options);

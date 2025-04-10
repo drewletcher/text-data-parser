@@ -1,0 +1,19 @@
+[
+{"year":"1963","make":"Chevrolet","model":"Corvair","engine":"H6","blower-type":"","color":"green","mileage":"112300","purchased":"1977-08-01","price*":"200.00","state":"IA","county":"Washington","status":"S"},
+{"year":"1973","make":"Ford","model":"Mustang","engine":"V8","blower-type":"","color":"green","mileage":"50304","purchased":"1979-09-21","price*":"1600.00","state":"IA","county":"Washington","status":"W"},
+{"year":"1976","make":"Fiat","model":"X1/9","engine":"L4","blower-type":"","color":"green","mileage":"77189","purchased":"1980-05-14","price*":"2300.00","state":"IA","county":"Washington","status":"S"},
+{"year":"1978","make":"Chrysler","model":"Cordoba","engine":"V8","blower-type":"","color":"black","mileage":"76312","purchased":"1981-06-12","price*":"4500.00","state":"IA","county":"Washington","status":"S"},
+{"year":"1965","make":"Ford","model":"Mustang","engine":"V8","blower-type":null,"color":"blue","mileage":"123100","purchased":"1973-07-14","price*":"700.00","state":"IA","county":"Johnson","status":"S"},
+{"year":"1981","make":"Dodge","model":"Omni","engine":"L4","blower-type":"","color":"yellow","mileage":"88123","purchased":"1989-03-03","price*":"2000.00","state":"IA","county":"Johnson","status":"S"},
+{"year":"1986","make":"Ford","model":"Mustang","engine":"V6","blower-type":"","color":"red","mileage":"114300","purchased":"1992-02-20","price*":"1500.00","state":"IA","county":"Johnson","status":"S"},
+{"year":"1988","make":"Toyota","model":"Camary","engine":"V6","blower-type":null,"color":"grey","mileage":"24017","purchased":"1988-05-12","price*":"12000.00","state":"IA","county":"Johnson","status":"S"},
+{"year":"1990","make":"Toyota","model":"Tercel","engine":"L4","blower-type":null,"color":"red","mileage":"48012","purchased":"1990-05-12","price*":"9800.00","state":"IA","county":"Johnson","status":"R"},
+{"year":"1995","make":"Ford","model":"Mustang","engine":"V6","blower-type":"","color":"red","mileage":"57117","purchased":"1998-04-21","price*":"8000.00","state":"IA","county":"Johnson","status":"S"},
+{"year":"1988","make":"Ford","model":"Thunderbird","engine":"V8","blower-type":"","color":"yellow","mileage":"112747","purchased":"1999-11-07","price*":"1200.00","state":"IA","county":"Johnson","status":"W"},
+{"year":"1994","make":"Pontiac","model":"Grand Am","engine":"V6","blower-type":"","color":"green","mileage":"77777","purchased":"2001-09-06","price*":"4800.00","state":"MN","county":"Hennipen","status":"J"},
+{"year":"2000","make":"Ford","model":"Mustang","engine":"V6","blower-type":"SC","color":"white","mileage":"798001","purchased":"2000-09-12","price*":"15000.00","state":"IA","county":"Johnson","status":"W"},
+{"year":"1998","make":"Chevrolet","model":"Cavalier","engine":"L4","blower-type":"","color":"black","mileage":"98989","purchased":"2005-08-14","price*":"6000.00","state":"IA","county":"Johnson","status":"S"},
+{"year":"1964","make":"Factory Five","model":"Daytona","engine":"V8","blower-type":"SC","color":"blue","mileage":"12218","purchased":"2009-05-14","price*":"30000.00","state":"IL","county":"DuPage","status":"S"},
+{"year":"2007","make":"Ford","model":"F150","engine":"V8","blower-type":"","color":"grey","mileage":"400","purchased":"2009-02-14","price*":"24000.00","state":"IL","county":"DuPage","status":"T"},
+{"year":"2002","make":"Mini","model":"Cooper S","engine":"L4","blower-type":"SC","color":"grey","mileage":"170000","purchased":"2008-05-20","price*":"17000.00","state":"IL","county":"DuPage","status":"T"}
+]
