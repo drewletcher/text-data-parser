@@ -1,7 +1,7 @@
 {
   "name": "text-data-parser",
-  "version": "1.0.1",
-  "description": "Parse, search and stream tabular data from text files using Node.js.",
+  "version": "1.0.2",
+  "description": "Parse and stream row data from text files using Node.js.",
   "author": "Drew O. Letcher",
   "license": "MIT",
   "keywords": [
@@ -36,8 +36,6 @@
     "eslint": "^9.8.0"
   },
   "dependencies": {
-    "colors": "^1.4.0",
-    "jsonc-parser": "^3.3.1",
-    "sax": "github:isaacs/sax-js#semver:1.4"
+    "colors": "^1.4.0"
   }
 }

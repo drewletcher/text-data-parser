@@ -1,6 +1,6 @@
 # text-data-parser 1.0.x
 
-Parse and stream data from Text documents using Node.js.
+Parse and stream row data from text files using Node.js.
 
 This readme explains how to use text-data-parser in your code or as a stand-alone program.
 
