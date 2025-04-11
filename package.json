@@ -1,6 +1,6 @@
 {
   "name": "text-data-parser",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Parse and stream row data from text files using Node.js.",
   "author": "Drew O. Letcher",
   "license": "MIT",
