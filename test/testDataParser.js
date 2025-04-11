@@ -9,12 +9,18 @@ const compareFiles = require("./_compareFiles");
 
 async function test(options) {
   try {
-    let outputName = path.parse(options.url || options.data).name;
+    let outputName = path.parse(options.url || options.data || options.rs).name;
 
     if (options.data) {
       options.data = fs.readFileSync(options.data);
       //options.data = new Uint8Array(fs.readFileSync(options.data));
       outputName += "_data";
+    }
+
+    if (options.rs) {
+      options.rs = fs.createReadStream(options.rs);
+      //options.data = new Uint8Array(fs.readFileSync(options.data));
+      outputName += "_rs";
     }
 
     let parser = new TextDataParser(options);
@@ -52,6 +58,11 @@ async function test(options) {
   // load file as options.data
   if (await test({
     data: "./test/data/text/helloworld.txt"
+  })) return 1;
+
+  // load file as options.data
+  if (await test({
+    rs: "./test/data/text/helloworld.txt"
   })) return 1;
 
 })();
