@@ -1,5 +1,7 @@
 # text-data-parser Change Log
 
+- version 1.0.5
+  - testing: comment out console.debug messages
 - version 1.0.4
   - testing: updated tests
 - version 1.0.3
