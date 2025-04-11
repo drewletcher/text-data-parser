@@ -9,7 +9,6 @@ const TextDataReader = require("./lib/TextDataReader.js");
 const RowAsObjectTransform = require("./lib/RowAsObjectTransform.js");
 const FormatCSV = require("./lib/FormatCSV.js");
 const FormatJSON = require("./lib/FormatJSON.js");
-const { parse } = require("jsonc-parser");
 const Package = require("./package.json");
 const colors = require('colors');
 
