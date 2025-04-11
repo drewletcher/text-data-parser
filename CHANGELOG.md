@@ -1,5 +1,7 @@
 # text-data-parser Change Log
 
+- version 1.0.3
+  - feature: support options.rs Readable
 - version 1.0.2
   - implement TextDataParser and tests
 - version 1.0.1
