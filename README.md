@@ -4,7 +4,7 @@ Parse and stream row data from text files using Node.js.
 
 This readme explains how to use text-data-parser in your code or as a stand-alone program.
 
-Related projects: [text-data-parser](https://gitlab.com/drewletcher/text-data-parser#readme), [pdf-data-parser](https://gitlab.com/drewletcher/pdf-data-parser#readme), [xlsx-data-parser](https://gitlab.com/drewletcher/xlsx-data-parser#readme)
+Related projects: [html-data-parser](https://gitlab.com/drewletcher/html-data-parser#readme), [pdf-data-parser](https://gitlab.com/drewletcher/pdf-data-parser#readme), [xlsx-data-parser](https://gitlab.com/drewletcher/xlsx-data-parser#readme)
 
 ## Installation
 
@@ -52,15 +52,13 @@ The options file supports options for all text-data-parser modules. Parser will 
   "output": "",
   // format - output data format CSV, JSON or rows, default JSON, rows is JSON array of arrays (rows).
   "format": "json",
-  // trim whitespace from output values, default: true.
-  "trim": true,
 
   /* RowAsObjectTransform options */
 
   // hasHeaders - data has a header row, if true and headers set then headers overrides header row.
-  "RowAsObject.hasHeader": true
+  "hasHeader": true
   // headers - comma separated list of column names for data, default none. When not defined the first table row encountered will be treated as column names.
-  "RowAsObject.headers": []
+  "headers": []
 
   /* HTTP options */
   // see HTTP Options below
@@ -125,13 +123,12 @@ Common Options:
 
 `{String} quote` - .
 
-`{Boolean} trim` - trim whitespace from output values, default: true.
-
 ### HTTP Options
 
 HTTP requests are mode using Node.js HTTP modules. See the source code file lib/httpRequest.js for more details.
 
 `{Object} http` - options to pass thru to HTTP request
+`{String|Object} http.url` - URL address
 `{String} http.method` - HTTP method, default is "GET"
 `{Object} http.params` - object containing URL querystring parameters.
 `{Object} http.headers` - object containing HTTP headers
