@@ -1,5 +1,8 @@
 # text-data-parser Change Log
 
+- version 1.0.6
+  - refactor: improved error handling; code cleanup
+  - docs: update options and arguments
 - version 1.0.5
   - testing: comment out console.debug messages
 - version 1.0.4
