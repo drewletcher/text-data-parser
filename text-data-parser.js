@@ -22,8 +22,7 @@ colors.enable();
 var options = {
   url: "",
   format: "json",
-  output: "",
-  trim: true
+  output: ""
 }
 
 /**

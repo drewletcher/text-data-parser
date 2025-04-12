@@ -2,9 +2,8 @@
   "url": "",
   "format": "json",
   "output": "",
-  "trim": true,
-  "RowAsObject.hasHeader": true,
-  "RowAsObject.headers": null,
+  "hasHeader": true,
+  "headers": null,
   "http": {
     "method": "GET",
     "headers": {},
