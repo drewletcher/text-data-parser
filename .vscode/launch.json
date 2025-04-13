@@ -16,12 +16,12 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/test/testDataParser.js"
+      "program": "${workspaceFolder}/test/TextDataParser.test.js"
     },
     {
       "type": "node",
       "name": "TextDataReader",
-      "program": "${workspaceFolder}/test/testDataReader.js",
+      "program": "${workspaceFolder}/test/TextDataReader.test.js",
       "request": "launch",
       "skipFiles": [
         "<node_internals>/**"
@@ -30,7 +30,7 @@
     {
       "type": "node",
       "name": "RowAsObjectTransform",
-      "program": "${workspaceFolder}/test/testRowAsObject.js",
+      "program": "${workspaceFolder}/test/RowAsObject.test.js",
       "request": "launch",
       "skipFiles": [
         "<node_internals>/**"
