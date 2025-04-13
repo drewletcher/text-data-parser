@@ -4,7 +4,7 @@ Parse and stream row data from text files using Node.js Readline module.
 
 This readme explains how to use text-data-parser in your code or as a stand-alone program.
 
-Related projects: [html-data-parser](https://gitlab.com/drewletcher/html-data-parser#readme), [pdf-data-parser](https://gitlab.com/drewletcher/pdf-data-parser#readme), [xlsx-data-parser](https://gitlab.com/drewletcher/xlsx-data-parser#readme)
+Related projects: [html-data-parser](https://github.com/drewletcher/html-data-parser#readme), [pdf-data-parser](https://github.com/drewletcher/pdf-data-parser#readme), [xlsx-data-parser](https://github.com/drewletcher/xlsx-data-parser#readme)
 
 ## Installation
 

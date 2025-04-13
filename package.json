@@ -1,6 +1,6 @@
 {
   "name": "text-data-parser",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Parse and stream row data from text files using Node.js.",
   "author": "Drew O. Letcher",
   "license": "MIT",
@@ -24,14 +24,9 @@
     "tdp": "text-data-parser.js",
     "textdataparser": "text-data-parser.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/drewletcher/text-data-parser.git"
-  },
-  "homepage": "https://gitlab.com/drewletcher/text-data-parser#readme",
-  "bugs": {
-    "url": "https://gitlab.com/drewletcher/text-data-parser/issues"
-  },
+  "repository": "git@github.com/drewletcher/text-data-parser.git",
+  "homepage": "https://github.com/drewletcher/text-data-parser#readme",
+  "bugs": "https://github.com/drewletcher/text-data-parser/issues",
   "devDependencies": {
     "eslint": "^9.24.0"
   },

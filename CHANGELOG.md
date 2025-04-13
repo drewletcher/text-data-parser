@@ -1,5 +1,7 @@
 # text-data-parser Change Log
 
+- version 1.0.8
+  - refactor: change project group to github:drewletcher
 - version 1.0.7
   - refactor: update options handling and documentation
   - bug fix: optional JSON output of rows as arrays
