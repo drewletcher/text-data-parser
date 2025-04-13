@@ -1,0 +1,19 @@
+{
+  "url": "",
+  "output": "",
+  "format": "json",
+  "encoding": "utf8",
+  "separator": ",",
+  "quote": "\"",
+  "hasHeader": true,
+  "headers": null,
+  "http": {
+    "method": "GET",
+    "headers": {
+      "User-Agent": "TextDataParser/1.0",
+      "Accept": "text/plain,text/csv;q=0.9,*/*;q=0.8",
+      "Accept-Encoding": "gzip, deflate, br, zstd"
+    },
+    "timeout": 5000
+  }
+}

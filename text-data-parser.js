@@ -10,6 +10,7 @@ const RowAsObjectTransform = require("./lib/RowAsObjectTransform.js");
 const FormatCSV = require("./lib/FormatCSV.js");
 const FormatJSON = require("./lib/FormatJSON.js");
 const Package = require("./package.json");
+const { parse } = require("jsonc-parser");
 const colors = require('colors');
 
 const { open, readFile } = require('node:fs/promises');
@@ -21,48 +22,65 @@ colors.enable();
 // default program options
 var options = {
   url: "",
-  format: "json",
-  output: ""
+  output: "",
+  format: "json"
 }
 
 /**
  * parseArgs
  *   only filename is required
- *   example ["node.exe", "text-data-parser.js", <filename.text|URL>, <output> "--headers=c1,c2,.." "--format=json|csv|rows" ]
+ *   example ["node.exe", "text-data-parser.js", <filename.text|URL>, <output> "--headers=c1,c2,.." "--format=csv|json|rows" ]
  */
 async function parseArgs() {
+  let clOptions = {}; // command line options
+  let ofOptions = {}; // options file options
+  let optionsfile = "tdp.options.json";
 
   let i = 2;
   while (i < process.argv.length) {
     let arg = process.argv[ i ];
 
     if (arg[ 0 ] !== "-") {
-      if (!options.url)
-        options.url = arg;
+      if (!clOptions.url)
+        clOptions.url = arg;
       else
-        options.output = arg;
+        clOptions.output = arg;
     }
     else {
       let nv = arg.split('=');
 
-      if (nv[ 0 ] === "--options") {
-        let optionsfile = await readFile(nv[ 1 ], { encoding: 'utf8' });
-        let perrors = [];
-        let poptions = {
-          disallowComments: false,
-          allowTrailingComma: true,
-          allowEmptyContent: false
-        };
-        Object.assign(options, parse(optionsfile, perrors, poptions));
-      }
+      if (nv[ 0 ] === "--options")
+        optionsfile = nv[ 1 ];
+      else if (nv[ 0 ] === "--separator")
+        clOptions.separator = nv[ 1 ].replace(/\\t/g, "\t");
+      else if (nv[ 0 ] === "--quote")
+        clOptions.quote = nv[ 1 ];
       else if (nv[ 0 ].includes("--headers"))
-        options.headers = nv[ 1 ].split(",");
+        clOptions.headers = nv[ 1 ].split(",");
       else if (nv[ 0 ] === "--format")
-        options.format = nv[ 1 ];
+        clOptions.format = nv[ 1 ].toLowerCase();
     }
     ++i;
   }
 
+  if (optionsfile) {
+    try {
+      let opts = await readFile(optionsfile, { encoding: 'utf8' });
+      let perrors = [];
+      let poptions = {
+        disallowComments: false,
+        allowTrailingComma: true,
+        allowEmptyContent: false
+      };
+      ofOptions = parse(opts, perrors, poptions)
+    }
+    catch (err) {
+      if (err.code !== 'ENOENT' || optionsfile != "tdp.options.json")
+        throw err;
+    }
+  }
+
+  Object.assign(options, ofOptions, clOptions);
 }
 
 /**
@@ -84,13 +102,15 @@ async function parseArgs() {
     console.log("");
     console.log("Parse tabular data from a Text file.");
     console.log("");
-    console.log("tdp [--options=filename.json] <filename.text|URL> [<output>] [--headers=name1,name2,...] [--format=json|csv|rows]");
+    console.log("tdp <filename.text|URL> <output-file> --options=filename.json --headers=name1,name2,... --format=csv|json|rows");
     console.log("");
-    console.log("  --options    - JSON or JSONC file containing tdp options, optional.");
     console.log("  filename|URL - path name or URL of Text file to process, required.");
-    console.log("  output       - local path name for output of parsed data, default stdout.");
+    console.log("  output-file  - local path name for output of parsed data, default stdout.");
+    console.log("  --options    - JSON or JSONC file containing tdp options, default: tdp.options.json.");
+    console.log("  --separator  - field separator value, default ','");
+    console.log("  --quote      - quote character value, default '\"'");
     console.log("  --headers    - comma separated list of column names for data, default none first table row contains names.");
-    console.log("  --format     - output data format JSON, CSV or rows (JSON arrays), default JSON.");
+    console.log("  --format     - output data format CSV, JSON, or ROW (JSON array of arrays), default JSON.");
     console.log("");
     return;
   }
@@ -101,12 +121,12 @@ async function parseArgs() {
     let reader = new TextDataReader(options);
     pipes.push(reader);
 
-    if (options?.format.toLowerCase() !== "rows") {
+    if (options?.format !== "rows") {
       let transform = new RowAsObjectTransform(options);
       pipes.push(transform);
     }
 
-    let formatter = options?.format.toLowerCase() === "csv" ? new FormatCSV() : new FormatJSON();
+    let formatter = options?.format === "csv" ? new FormatCSV(options) : new FormatJSON(options);
     pipes.push(formatter);
 
     let writer;
