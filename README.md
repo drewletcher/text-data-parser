@@ -1,6 +1,6 @@
 # text-data-parser 1.0.x
 
-Parse and stream row data from text files using Node.js.
+Parse and stream row data from text files using Node.js Readline module.
 
 This readme explains how to use text-data-parser in your code or as a stand-alone program.
 
@@ -24,19 +24,21 @@ npm install text-data-parser
 
 ---
 
-Parse tabular data from a Text document.
+Parse tabular data from a delimited text documents like CSV, tab or pipe delimited.
 
 ```bash
-tdp [--options=filename.json] [--headers=name1,name2,...] [--format=json|csv|rows] <filename|URL> [<output-file>]
+tdp <filename|URL> <output-file> --options=filename.json --headers=name1,name2,... --format=csv|json|rows
 
   `filename|URL` - path name or URL of Text file to process, required.
   `output-file`  - local path name for output of parsed data, default stdout.
-  `--options`    - JSON or JSONC file containing JSON object with tdp options, optional.
+  `--options`    - JSON or JSONC file containing JSON object with tdp options, default: tdp.options.json.
+  `--separator`  - field separator value, default ','
+  `--quote`      - quote character value, default '"'
   `--headers`    - comma separated list of column names for data, default none the first table row contains names.
-  `--format`     - output data format JSON, CSV or rows (JSON arrays), default JSON.
+  `--format`     - output data format CSV, JSON, or ROWS (JSON array of arrays), default JSON.
 ```
 
-Note: If the `tdp` command conflicts with another program on your system use `tdpdataparser` instead.
+Note: If the `tdp` command conflicts with another program on your system use `textdataparser` instead.
 
 ### Options File
 
@@ -45,28 +47,22 @@ The options file supports options for all text-data-parser modules. Parser will 
 ```javascript
 {
   /* TextDataParser options */
+  "url": "",         // local path name or URL of Text file to process, required.
+  "output": "",      // local path name for output of parsed data, default stdout.
+  "format": "json",  // output data format CSV, JSON or rows, default JSON, rows is JSON array of arrays (rows).
 
-  // url - local path name or URL of Text file to process, required.
-  "url": "",
-  // output - local path name for output of parsed data, default stdout.
-  "output": "",
-  // format - output data format CSV, JSON or rows, default JSON, rows is JSON array of arrays (rows).
-  "format": "json",
+  "encoding": "utf8", // file encoding, default "utf8"
+  "separator": ",",   // field separator value, default ','
+  "quote": "\"",      // quote character value, default '"'
 
   /* RowAsObjectTransform options */
-
-  // hasHeaders - data has a header row, if true and headers set then headers overrides header row.
-  "hasHeader": true
-  // headers - comma separated list of column names for data, default none. When not defined the first table row encountered will be treated as column names.
-  "headers": []
+  "hasHeader": true,  // data has a header row, if true and headers set then headers overrides header row.
+  "headers": []       // comma separated list of column names for data, default none. When not defined the first table row encountered will be treated as column names.
 
   /* HTTP options */
   // see HTTP Options below
-
 }
 ```
-
-Note: Transform property names can be shortened to `hasHeader`, `headers`, `column` and `header`.
 
 ### Examples
 
@@ -79,11 +75,11 @@ tdp ./test/data/text/helloworld.text --headers="BigBang"
 ```
 
 ```bash
-tdp ./test/data/text/foo_data.txt  --separator="\t"
+tdp http://dev.oby4.org/data/test/data/input/foo_cars.csv
 ```
 
 ```bash
-tdp https://www.sos.state.tx.us/elections/historical/jan2024.shtml ./test/output/tdp/tx_voter_reg.json
+tdp http://dev.oby4.org/data/test/data/input/foo_data.txt --separator="\t"
 ```
 
 ## Developer Guide
@@ -111,17 +107,17 @@ async function parseDocument() {
 
 ### TextDataParser Options
 
-TextDataParser constructor takes an options object with the following fields. One of `url` or `data` arguments is required.
+TextDataParser constructor takes an options object with the following fields. One of `url`, `data` or `rs` arguments is required.
 
 `{String|URL} url` - The local path or URL of the Text document.
-
 `{String|Uint8Array} data` - Text document in a string.
+`{Readable} rs` - Readable stream for the text document.
 
-Common Options:
+Other Options:
 
-`{String} separator` - .
-
-`{String} quote` - .
+`{String} separator` - field separator value, default ','
+`{String} quote` - quote character value, default '"'
+`{String} encoding` - file/stream encoding, default "utf8"
 
 ### HTTP Options
 
