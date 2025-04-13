@@ -1,14 +1,14 @@
 {
   "name": "text-data-parser",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Parse and stream row data from text files using Node.js.",
   "author": "Drew O. Letcher",
   "license": "MIT",
   "keywords": [
-    "text",
+    "csv",
     "txt",
-    "table",
-    "tabular data",
+    "tab",
+    "delimited data",
     "parser"
   ],
   "type": "commonjs",
@@ -33,9 +33,10 @@
     "url": "https://gitlab.com/drewletcher/text-data-parser/issues"
   },
   "devDependencies": {
-    "eslint": "^9.8.0"
+    "eslint": "^9.24.0"
   },
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "jsonc-parser": "^3.3.1"
   }
 }

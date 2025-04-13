@@ -1,5 +1,8 @@
 # text-data-parser Change Log
 
+- version 1.0.7
+  - refactor: update options handling and documentation
+  - bug fix: optional JSON output of rows as arrays
 - version 1.0.6
   - refactor: improved error handling; code cleanup
   - docs: update options and arguments
