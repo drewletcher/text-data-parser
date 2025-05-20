@@ -1,1 +1,1 @@
-{"version":3,"file":"RowAsObjectTransform.d.ts","sourceRoot":"","sources":["../lib/RowAsObjectTransform.js"],"names":[],"mappings":";mBAgBK;QAA4B,SAAS;QACT,OAAO;KACrC;;;QAqBD;;;;;WAKG;wBAHQ,MAAM"}
+{"version":3,"file":"RowAsObjectTransform.d.ts","sourceRoot":"","sources":["../lib/RowAsObjectTransform.js"],"names":[],"mappings":"AAOA;;GAEG;AACH;IAEE;;;;;;OAMG;IACH,sBAHG;QAA4B,SAAS;QACT,OAAO;KACrC,EAmBA;IAZC,aAAwG;IAGtG,eAAkC;IAWtC;;;;;OAKG;IACH,gBAJW,MAAM,8CAmBhB;IAbG,6BAAmB;CAoBxB"}

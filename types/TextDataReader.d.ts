@@ -1,5 +1,4 @@
-export = TextDataReader;
-declare class TextDataReader {
+export default class TextDataReader {
     /**
      *
      * @param {Object}      options
@@ -15,33 +14,7 @@ declare class TextDataReader {
         data: Uint8Array | string;
     };
     _construct(callback: any): Promise<void>;
-    parser: {
-        options: {
-            separator: string;
-            quote: string;
-        } & {
-            url?: string | URL | undefined;
-            data?: string | Uint8Array<ArrayBuffer> | undefined;
-            rs?: Readable;
-            encoding?: string | undefined;
-            separator?: string | undefined;
-            quote?: string | undefined;
-        };
-        separator: string;
-        quote: string;
-        checkBOM: boolean;
-        rows: any[];
-        count: number;
-        started: boolean;
-        paused: boolean;
-        cancelled: boolean;
-        close(): void;
-        pause(): void;
-        resume(): void;
-        parse(): Promise<any[] | undefined>;
-        rl: any;
-        parseLine(line: string): (string | null)[];
-    } | undefined;
+    parser: TextDataParser | undefined;
     _destroy(err: any, callback: any): void;
     /**
      * Fetch data from the underlying resource.
@@ -49,4 +22,5 @@ declare class TextDataReader {
      */
     _read(size: any): Promise<void>;
 }
+import TextDataParser from './TextDataParser.js';
 //# sourceMappingURL=TextDataReader.d.ts.map
