@@ -5,17 +5,17 @@
  */
 "use strict";
 
-const TextDataReader = require("./lib/TextDataReader.js");
-const RowAsObjectTransform = require("./lib/RowAsObjectTransform.js");
-const FormatCSV = require("./lib/FormatCSV.js");
-const FormatJSON = require("./lib/FormatJSON.js");
-const Package = require("./package.json");
-const { parse } = require("jsonc-parser");
-const colors = require('colors');
+import TextDataReader from './lib/TextDataReader.js';
+import RowAsObjectTransform from './lib/RowAsObjectTransform.js';
+import FormatCSV from './lib/FormatCSV.js';
+import FormatJSON from './lib/FormatJSON.js';
+import Package from './package.json' with { type: 'json' };
+import { parse } from 'jsonc-parser';
+import colors from 'colors';
 
-const { open, readFile } = require('node:fs/promises');
-const { pipeline } = require('node:stream/promises');
-const { stdout } = require('node:process');
+import { open, readFile } from 'node:fs/promises';
+import { pipeline } from 'node:stream/promises';
+import { stdout } from 'node:process';
 
 colors.enable();
 
@@ -55,6 +55,8 @@ async function parseArgs() {
         clOptions.separator = nv[ 1 ].replace(/\\t/g, "\t");
       else if (nv[ 0 ] === "--quote")
         clOptions.quote = nv[ 1 ];
+      else if (nv[ 0 ].includes("--hasHeader"))
+        clOptions.hasHeader = nv[ 1 ] == "true";
       else if (nv[ 0 ].includes("--headers"))
         clOptions.headers = nv[ 1 ].split(",");
       else if (nv[ 0 ] === "--format")
@@ -102,13 +104,14 @@ async function parseArgs() {
     console.log("");
     console.log("Parse tabular data from a Text file.");
     console.log("");
-    console.log("tdp <filename.text|URL> <output-file> --options=filename.json --headers=name1,name2,... --format=csv|json|rows");
+    console.log("tdp <filename.text|URL> <output-file> --options=filename.json --format=csv|json|rows");
     console.log("");
     console.log("  filename|URL - path name or URL of Text file to process, required.");
     console.log("  output-file  - local path name for output of parsed data, default stdout.");
     console.log("  --options    - JSON or JSONC file containing tdp options, default: tdp.options.json.");
     console.log("  --separator  - field separator value, default ','");
     console.log("  --quote      - quote character value, default '\"'");
+    console.log("  --hasHeader  - first row of input are column names, default false.");
     console.log("  --headers    - comma separated list of column names for data, default none first table row contains names.");
     console.log("  --format     - output data format CSV, JSON, or ROW (JSON array of arrays), default JSON.");
     console.log("");

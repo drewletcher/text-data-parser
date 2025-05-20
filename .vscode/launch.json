@@ -38,7 +38,7 @@
     },
     {
       "type": "node-terminal",
-      "name": "---",
+      "name": "--- tdp",
       "request": "launch"
     },
     {
@@ -79,7 +79,7 @@
       "request": "launch",
       "name": "tdp foo_cars csv",
       "program": "text-data-parser.js",
-      "args": [ ".\\test\\data\\text\\foo_cars.csv", ".\\test\\output\\tdp\\foo_cars.json", "--format=json" ],
+      "args": [ ".\\test\\data\\foo_cars.csv", ".\\test\\output\\tdp\\foo_cars.json", "--hasHeader=true", "--format=json" ],
       "outputCapture": "std",
       "skipFiles": [
         "<node_internals>/**"

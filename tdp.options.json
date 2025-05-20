@@ -5,7 +5,7 @@
   "encoding": "utf8",
   "separator": ",",
   "quote": "\"",
-  "hasHeader": true,
+  "hasHeader": false,
   "headers": null,
   "http": {
     "method": "GET",

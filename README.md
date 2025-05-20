@@ -27,14 +27,15 @@ npm install text-data-parser
 Parse tabular data from a delimited text documents like CSV, tab or pipe delimited.
 
 ```bash
-tdp <filename|URL> <output-file> --options=filename.json --headers=name1,name2,... --format=csv|json|rows
+tdp <filename|URL> <output-file> --options=filename.json --format=csv|json|rows
 
   `filename|URL` - path name or URL of Text file to process, required.
   `output-file`  - local path name for output of parsed data, default stdout.
   `--options`    - JSON or JSONC file containing JSON object with tdp options, default: tdp.options.json.
-  `--separator`  - field separator value, default ','
-  `--quote`      - quote character value, default '"'
-  `--headers`    - comma separated list of column names for data, default none the first table row contains names.
+  `--separator`  - field separator value, default ','.
+  `--quote`      - quote character value, default '"'.
+  `--hasHeader`  - first row of input are column names, default false.
+  `--headers`    - comma separated list of column names for data, default none.
   `--format`     - output data format CSV, JSON, or ROWS (JSON array of arrays), default JSON.
 ```
 
@@ -75,11 +76,11 @@ tdp ./test/data/text/helloworld.text --headers="BigBang"
 ```
 
 ```bash
-tdp http://dev.oby4.org/data/test/data/input/foo_cars.csv
+tdp http://dev.oby4.org/data/test/_data/foo_cars.csv --hasHeader=true
 ```
 
 ```bash
-tdp http://dev.oby4.org/data/test/data/input/foo_data.txt --separator="\t"
+tdp http://dev.oby4.org/test/data/text/foo_data.txt --separator="\t" --hasHeader=true
 ```
 
 ## Developer Guide
@@ -95,7 +96,7 @@ Rows and Cells terminology is used instead of Rows and Columns because the conte
 ### Basic Usage
 
 ```javascript
-const { TextDataParser } = require("text-data-parser");
+import { TextDataParser } from 'text-data-parser.js';
 
 let parser = new TextDataParser({url: "filename.text"});
 
@@ -140,7 +141,7 @@ HTTP requests are mode using Node.js HTTP modules. See the source code file lib/
 TextDataReader is a Node.js stream reader implemented with the Object mode option. It uses TextDataParser to stream one data row (array) per chunk.
 
 ```javascript
-const { TextDataReader } = require("text-data-parser");
+import { TextDataReader } from 'text-data-parser.js';
 
 let reader = new TextDataReader({url: "filename.text"});
 var rows = [];
@@ -167,8 +168,8 @@ TextDataReader constructor options are the same as [TextDataParser Options](#tex
 TextDataReader operates in Object Mode. The reader outputs arrays (rows). To convert rows into Javascript objects use the RowAsObjectTransform transform.  TextDataReader operates in Object mode where a chunk is a Javascript Object of <name,value> pairs.
 
 ```javascript
-const { TextDataReader, RowAsObjectTransform } = require("text-data-parser");
-const { pipeline } = require('node:stream/promises');
+import { TextDataReader, RowAsObjectTransform } from 'text-data-parser.js';
+import { pipeline } from 'node:stream/promises';
 
 let reader = new TextDataReader(options);
 let transform1 = new RowAsObjectTransform(options);
@@ -183,7 +184,7 @@ RowAsObjectTransform constructor takes an options object with the following fiel
 
 `{String[]} headers` - array of cell property names; optional, default: none. If a headers array is not specified then parser will assume the first row found contains cell property names.
 
-`{Boolean} hasHeaders` - data has a header row, if true and headers options is set then provided headers override header row. Default is true.
+`{Boolean} hasHeaders` - data has a header row, if true and headers options is set then provided headers override header row. Default is false.
 
 If a row is encountered with more cells than in the headers array then extra cell property names will be the ordinal position. For example if the data contains five cells, but only three headers where specified.  Specifying `options = { headers: [ 'name', 'type', 'info' ] }` then the Javascript objects in the stream will contain `{ "name": "value1", "type": "value2", "info": "value3", "4": "value4", "5": "value5" }`.
 
@@ -192,8 +193,8 @@ If a row is encountered with more cells than in the headers array then extra cel
 The `tdpdataparser` CLI program uses the FormatCSV and FormatJSON transforms to covert Javascript Objects into strings that can be saved to a file.
 
 ```javascript
-const { TextDataReader, RowAsObjectTransform, FormatCSV } = require("text-data-parser");
-const { pipeline } = require('node:stream/promises');
+import { TextDataReader, RowAsObjectTransform, FormatCSV } from 'text-data-parser.js';
+import { pipeline } from 'node:stream/promises';
 
 let reader = new TextDataReader(options);
 let transform1 = new RowAsObjectTransform(options);
