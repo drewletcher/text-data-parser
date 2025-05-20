@@ -2,10 +2,10 @@
  * test/testDataParser.js
  */
 
-const TextDataParser = require("../lib/TextDataParser");
-const fs = require("fs");
-const path = require("path");
-const compareFiles = require("./_compareFiles");
+import TextDataParser from '../lib/TextDataParser.js';
+import fs from 'node:fs';
+import path from 'node:path';
+import compareFiles from './_compareFiles.js';
 
 async function test(options) {
   try {
@@ -52,7 +52,7 @@ async function test(options) {
   })) return 1;
 
   if (await test({
-    url: "http://dev.oby4.org/data/test/data/input/foo_cars.csv"
+    url: "http://dev.oby4.org/data/test/_data/foo_cars.csv"
   })) return 1;
 
   // load file as options.data

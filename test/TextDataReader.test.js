@@ -2,12 +2,12 @@
  * test/testDataReader.js
  */
 
-const TextDataReader = require("../lib/TextDataReader");
-const FormatJSON = require('../lib/FormatJSON');
-const { finished } = require('stream/promises');
-const fs = require("fs");
-const path = require("path");
-const compareFiles = require("./_compareFiles");
+import TextDataReader from '../lib/TextDataReader.js';
+import FormatJSON from '../lib/FormatJSON.js';
+import { finished } from 'node:stream/promises';
+import fs from 'node:fs';
+import path from 'node:path';
+import compareFiles from './_compareFiles.js';
 
 async function test(options) {
   let outputName = path.parse(options.url || options.data).name;
@@ -45,7 +45,7 @@ async function test(options) {
   })) return 1;
 
   if (await test({
-    url: "http://dev.oby4.org/data/test/data/input/foo_cars.csv"
+    url: "http://dev.oby4.org/data/test/_data/foo_cars.csv"
   })) return 1;
 
   // load file as options.data
