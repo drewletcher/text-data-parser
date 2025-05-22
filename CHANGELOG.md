@@ -1,5 +1,9 @@
 # text-data-parser Change Log
 
+- version 1.1.9
+  - refactor: convert to ECMAScript modules
+  - feature: expose option hasHeader as program argument
+
 - version 1.0.8
   - refactor: change project group to github:drewletcher
 - version 1.0.7
