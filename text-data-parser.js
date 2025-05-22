@@ -3,7 +3,6 @@
 /**
  * text-data-parser
  */
-"use strict";
 
 import TextDataReader from './lib/TextDataReader.js';
 import RowAsObjectTransform from './lib/RowAsObjectTransform.js';
